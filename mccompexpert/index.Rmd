@@ -25,26 +25,22 @@ In the next slides I will
 ---
 
 ## Dataset
-
 * I take the WorldPhones dataset from datasets library
 * and do some manupulations to fit my small Shiny app requirements:
- + I transpose the dataset to get years as column names
- + for this I use dcast and melt functions
+ + I transpose the dataset to get years as column names using dcast and melt
  + I create a vector with a couple of German federal states
 * Meaning that I am using the dataset as a dummy to map the numbers to German map        
-* Making no sense but ok for Shiny app demonstration purpose
-
 ```{r, eval=FALSE}
 # Data preparation steps
 phones <- data.frame(WorldPhones)
 phones$year<-row.names(phones)
 phones <-dcast(melt(phones), ...~year)
-phones<-phones[,-1]
-phones$laender <- c("Bayern", "Berlin", "Saxony", 
-                    "Hesse", "Saarland", "Thuringia", "Bremen")
-
 ```
 
+```{r}
+phones <- data.frame(WorldPhones); phones$laender <- c("a", "b", "c", "d", "e", "f", "g")
+phones$laender
+```
 ---
 
 ## ui.R
